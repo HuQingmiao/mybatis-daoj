@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+    <component name="EntryPointsManager">
+        <entry_points version="2.0"/>
+    </component>
+    <component name="IdProvider" IDEtalkID="67149D2A28F5FE900575246BDD9F2E01"/>
+    <component name="MavenProjectsManager">
+        <option name="originalFiles">
+            <list>
+                <option value="$PROJECT_DIR$/pom.xml"/>
+            </list>
+        </option>
+    </component>
+    <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true"
+               project-jdk-name="1.7" project-jdk-type="JavaSDK">
+        <output url="file://$PROJECT_DIR$/classes"/>
+    </component>
+    <component name="SvnBranchConfigurationManager">
+        <option name="myConfigurationMap">
+            <map>
+                <entry key="$PROJECT_DIR$">
+                    <value>
+                        <SvnBranchConfiguration>
+                            <option name="branchUrls">
+                                <list>
+                                    <option value="http://dev.mucfc.com/svn/act/act/code/branches"/>
+                                    <option value="http://dev.mucfc.com/svn/act/act/code/tags"/>
+                                </list>
+                            </option>
+                            <option name="trunkUrl" value="http://dev.mucfc.com/svn/act/act/code/trunk"/>
+                        </SvnBranchConfiguration>
+                    </value>
+                </entry>
+            </map>
+        </option>
+        <option name="mySupportsUserInfoFilter" value="true"/>
+    </component>
+</project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by HuQingmiao -->
+
+<daoj>
+    <dataSource>
+        <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://10.75.204.32:3306/act_dev"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </dataSource>
+
+
+    <params>
+        <!-- 指定实体类基类, 默认为 BasicVo -->
+        <property name="basicEntity" value="com.mucfc.act.common.BasicVo"/>
+
+        <!-- 指定DAO基类, 默认为 BasicDao -->
+        <property name="basicDao" value="com.mucfc.act.common.BasicDao"/>
+
+        <!-- 设定生成后的实体类所在的包 -->
+        <property name="entityPackage" value="com.mucfc.act.vo"/>
+
+        <!-- 设定生成后的DAO接口所在的包 -->
+        <property name="daoPackage" value="com.mucfc.act.dao"/>
+
+
+        <!-- 设定代码生成的输出目录, 支持相对路径或绝对路径 -->
+        <property name="outputDirc" value="generated-files"/>
+
+        <!-- 列出要生成的表名, 多个表可以逗号(',')分隔。 注意，数据库表必须指定了主键列。 -->
+        <property name="tables" value="book"/>
+
+    </params>
+
+</daoj>
