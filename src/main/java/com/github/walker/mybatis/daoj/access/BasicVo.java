@@ -1,4 +1,4 @@
-package walker.mybatis.daoj.access;
+package com.github.walker.mybatis.daoj.access;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

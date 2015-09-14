@@ -1,4 +1,4 @@
-package walker.mybatis.daoj.utils;
+package com.github.walker.mybatis.daoj.utils;
 
 import java.io.File;
 import java.io.FileWriter;

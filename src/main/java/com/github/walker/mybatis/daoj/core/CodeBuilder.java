@@ -1,7 +1,7 @@
-package walker.mybatis.daoj.core;
+package com.github.walker.mybatis.daoj.core;
 
 
-import walker.mybatis.daoj.utils.MappingUtil;
+import com.github.walker.mybatis.daoj.utils.MappingUtil;
 
 import java.util.*;
 

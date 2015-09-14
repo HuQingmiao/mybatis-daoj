@@ -1,7 +1,7 @@
-package walker.mybatis.daoj.core;
+package com.github.walker.mybatis.daoj.core;
 
 
-import walker.mybatis.daoj.utils.MappingUtil;
+import com.github.walker.mybatis.daoj.utils.MappingUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,7 @@ import java.io.OutputStreamWriter;
  *                 4. 要在mybatis.xml中增加分页插件，添加如下配置即可:
  *                      <plugins>
  *                          <!-- 分页查询拦截器 -->
- *                          <plugin interceptor="walker.mybatis.paginator.OffsetLimitInterceptor">
+ *                          <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
  *                      </plugins>
  *
  *                     并且，你的工程也要引入相应jar包:

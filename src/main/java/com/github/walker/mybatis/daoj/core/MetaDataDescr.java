@@ -1,4 +1,4 @@
-package walker.mybatis.daoj.core;
+package com.github.walker.mybatis.daoj.core;
 
 /**
  * 本自定义元数据的描述类

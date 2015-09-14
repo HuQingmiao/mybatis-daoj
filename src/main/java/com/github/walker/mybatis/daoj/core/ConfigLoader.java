@@ -1,6 +1,6 @@
-package walker.mybatis.daoj.core;
+package com.github.walker.mybatis.daoj.core;
 
-import walker.mybatis.daoj.utils.XmlUtil;
+import com.github.walker.mybatis.daoj.utils.XmlUtil;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.slf4j.Logger;

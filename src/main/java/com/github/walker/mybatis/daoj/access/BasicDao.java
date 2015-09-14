@@ -1,4 +1,4 @@
-package walker.mybatis.daoj.access;
+package com.github.walker.mybatis.daoj.access;
 
 import walker.mybatis.paginator.PageBounds;
 

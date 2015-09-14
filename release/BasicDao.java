@@ -1,6 +1,6 @@
 package com.mucfc.daoj.access;
 
-import walker.mybatis.daoj.access.BasicVo;
+import com.github.walker.mybatis.daoj.access.BasicVo;
 import walker.mybatis.paginator.PageBounds;
 
 import java.util.List;
