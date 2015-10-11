@@ -22,12 +22,12 @@
  *                 4. 要在mybatis.xml中增加分页插件，添加如下配置即可:
  *                      <plugins>
  *                          <!-- 分页查询拦截器 -->
- *                          <plugin interceptor="walker.mybatis.paginator.OffsetLimitInterceptor">
+ *                          <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
  *                      </plugins>
  *
  *                     并且，你的工程也要引入相应jar包:
  *                          <dependency><!-- mybatis分页控件 -->
- *                              <groupId>walker</groupId>
+ *                              <groupId>com.github.walker</groupId>
  *                              <artifactId>mybatis-paginator</artifactId>
  *                              <version>20150827</version>
  *                          </dependency>
