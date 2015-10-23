@@ -215,6 +215,7 @@ class CodeBuilder {
 
 
         ///////////////////// saveBatch
+        buff.append("\n    <!------- 适用于mysql的批量新增 ------->\n");
         buff.append("    <insert id=\"saveBatch\">\n");
         buff.append("        INSERT INTO " + tableName + "( ");
 
@@ -261,6 +262,58 @@ class CodeBuilder {
         buff.append("        </foreach>\n");
         buff.append("    </insert>\n\n");
         valuesStr.delete(0, valuesStr.length());
+
+
+        buff.append("\n    <!------- 适用于oracle的批量新增 ------->\n");
+        buff.append("    <!--\n");
+        buff.append("    <insert id=\"saveBatch\">\n");
+        buff.append("        INSERT INTO " + tableName + "( ");
+
+        it = colNameMetaMap.keySet().iterator();
+        i = 0;
+        for (; it.hasNext(); ) {
+            String colName = (String) it.next();
+            MetaDataDescr md = colNameMetaMap.get(colName);
+//            if (md.isPk()) {
+//                continue;
+//            }
+            buff.append(colName + ",");
+            valuesStr.append("#{item." + md.getFieldName() + "},");
+
+            i++;
+            if (i % 7 == 0) {
+                buff.append("\n                          ");
+                valuesStr.append("\n              ");
+            }
+        }
+        while (buff.charAt(buff.length() - 1) == ' ') {
+            buff.deleteCharAt(buff.length() - 1);
+        }
+        while (valuesStr.charAt(valuesStr.length() - 1) == ' ') {
+            valuesStr.deleteCharAt(valuesStr.length() - 1);
+        }
+        if (buff.charAt(buff.length() - 1) == '\n') {
+            buff.deleteCharAt(buff.length() - 1);
+        }
+        if (buff.charAt(buff.length() - 1) == ',') {
+            buff.deleteCharAt(buff.length() - 1);
+        }
+        if (valuesStr.charAt(valuesStr.length() - 1) == '\n') {
+            valuesStr.deleteCharAt(valuesStr.length() - 1);
+        }
+        if (valuesStr.charAt(valuesStr.length() - 1) == ',') {
+            valuesStr.deleteCharAt(valuesStr.length() - 1);
+        }
+        buff.append(" )\n");
+
+        buff.append("        <foreach collection=\"list\" item=\"item\" index=\"index\" separator=\"UNION ALL\">\n");
+        buff.append("            SELECT " + valuesStr.toString() + " \n");
+        buff.append("              FROM DUAL \n");
+        buff.append("        </foreach>\n");
+        buff.append("    </insert>\n\n");
+        valuesStr.delete(0, valuesStr.length());
+
+        buff.append("    -->\n");
 
 
         buff.append("\n    <!-- ============================= UPDATE ============================= -->\n");
@@ -374,7 +427,7 @@ class CodeBuilder {
         buff.append("        DELETE FROM " + tableName + "\n");
         buff.append("        WHERE\n");
         buff.append("        <foreach collection=\"list\" item=\"item\" index=\"index\" open=\"(\" separator=\"OR\" close=\")\">\n");
-        buff.append("            (");
+        buff.append("            ");
         keyIt = pkColFieldMap.keySet().iterator();
         for (; keyIt.hasNext(); ) {
             String colName = keyIt.next();
@@ -383,7 +436,7 @@ class CodeBuilder {
         if (buff.substring(buff.length() - 4, buff.length()).equals("AND ")) {
             buff.delete(buff.length() - 4, buff.length());
         }
-        buff.append(")\n");
+        buff.append("\n");
         buff.append("        </foreach>\n");
         buff.append("    </delete>\n\n");
 

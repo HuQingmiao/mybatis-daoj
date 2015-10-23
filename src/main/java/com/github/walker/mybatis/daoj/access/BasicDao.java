@@ -1,6 +1,6 @@
 package com.github.walker.mybatis.daoj.access;
 
-import walker.mybatis.paginator.PageBounds;
+import com.github.walker.mybatis.paginator.PageBounds;
 
 import java.util.List;
 import java.util.Map;

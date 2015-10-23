@@ -4,7 +4,7 @@
 
     <groupId>com.github.walker</groupId>
     <artifactId>mybatis-daoj</artifactId>
-    <version>20150620</version>
+    <version>1.2.0</version>
 
     <packaging>jar</packaging>
 
@@ -33,9 +33,11 @@
         </dependency>
 
         <dependency><!-- mybatis分页控件 -->
-            <groupId>walker</groupId>
+            <groupId>com.github.walker</groupId>
             <artifactId>mybatis-paginator</artifactId>
-            <version>20150827</version>
+            <version>1.2.0</version>
+            <scope>system</scope>
+            <systemPath>D:/intellj-projects/mybatis-daoj/lib/mybatis-paginator-1.2.0.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -44,11 +46,13 @@
             <version>5.1.30</version>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc14</artifactId>
             <version>10.2.0.3.0</version>
         </dependency>
+        -->
 
     </dependencies>
 
