@@ -43,8 +43,8 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
 5.现在可以在你的service层代码调用dao层了。
 
 6.注意事项:
-    * 本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在其子接口中扩展你的个性方法。
-    * 如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的'useGeneratedKeys="true" keyProperty="xx"'。
+    *本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在其子接口中扩展你的个性方法。<p/>
+    *如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的'useGeneratedKeys="true" keyProperty="xx"'。
 
 
 ## 参与本开源项目开发，请知道：
