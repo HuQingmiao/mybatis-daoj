@@ -10,7 +10,8 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
 * 生成的dao接口类，没有接口方法，仅标识为从BasicDao接口类继承。
 * 不生成dao实现类，因为那是完全是不必要的，而mapper.xml本意就是对dao接口的实现。
 * 生成的mapper文件，非常简洁，即使是增、改、删等批量操作的逻辑也都很容易理解。
-3. 生成的代码，后续基本不需要修改，可以适应90%以上的场景。对于另外10%的个性场景，你可以通过扩展dao接口，增加新的方法实现。
+
+<p/>3. 生成的代码，后续基本不需要修改，可以适应90%以上的场景。对于另外10%的个性场景，你可以通过扩展dao接口，增加新的方法实现。
 
 
 ## 本工具使用说明：
@@ -36,8 +37,7 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
           </plugin>
       </plugins>
 ``` 
-     并且，你的工程也要引入分页插件包mybatis-paginator.jar，您可以在这个链接页面找到下载地址:
-                                https://github.com/HuQingmiao/mybatis-paginator
+     并且，你的工程也要引入分页插件包[mybatis-paginator.jar](https://github.com/HuQingmiao/mybatis-paginator)。
 
 
  5. 现在可以在你的service层代码调用dao层了。
