@@ -5,10 +5,8 @@
  *
  * 一. 使用说明:
  *
- * 1. 先下载mybatis-paginator.jar(链接: http://pan.baidu.com/s/1i38kc8t 密码: bu44)，解压后打。
-
-
- 打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类所在的包名，以及生成代码的输出目录。
+ * 1. 先下载mybatis-paginator.jar(链接: http://pan.baidu.com/s/1i38kc8t 密码: bu44)，
+ *   解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类所在的包名，以及生成代码的输出目录。
  *
  * 2. 双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：vo实体类,dao接口类,mapper.xml，
  *      将这些文件复制到你工程的对应目录。
@@ -27,7 +25,7 @@
  *          </plugin>
  *      </plugins>
  *
- *     并且，你的工程也要引入分页插件包mybatis-paginator.jar，您可以在这个链接页面找到下载地址:
+ *     并且，你的工程也要引入分页插件包mybatis-paginator.jar，你可以在这个链接页面找到下载地址：
  *                                https://github.com/HuQingmiao/mybatis-paginator
  *
  *
@@ -35,5 +33,6 @@
  *
  * 6. 注意事项:
  *    *本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在其子接口中扩展你的个性方法。
- *    *如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的'useGeneratedKeys="true" keyProperty="xx"'。
+ *    *如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的
+ *                                       'useGeneratedKeys="true" keyProperty="xx"' 。
  */
