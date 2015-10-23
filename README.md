@@ -9,8 +9,8 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
 <p/>2. 生成的代码量很少，非常简洁，也易于维护：
 * 生成的dao接口类，没有接口方法，仅标识为从BasicDao接口类继承。
 * 不生成dao实现类，因为那是完全是不必要的，而mapper.xml本意就是对dao接口的实现。
-* 生成的mapper文件，非常简洁，即使是增、删、改等批量操作的逻辑也都很容易理解。
-<p/>3. 生成的代码，后续基本不需要修改，可以适应90%以上的场景。对于另外10%的个性场景，你可以通过扩展dao接口，增加新的方法实现。
+* 生成的mapper文件，非常简洁，即使是增、改、删等批量操作的逻辑也都很容易理解。
+3. 生成的代码，后续基本不需要修改，可以适应90%以上的场景。对于另外10%的个性场景，你可以通过扩展dao接口，增加新的方法实现。
 
 
 ## 本工具使用说明：
@@ -20,19 +20,22 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
       将这些文件复制到你工程的对应目录。
 
  3. 要让生成的代码运行起来，还需要在mybatis.xml中增加如下配置:
+``` 
       <typeAliases>
            <!-- 为vo包下的所有类自动定义别名, 因为生成的mapper.xml中的"resultType" 指定的是vo实体类的别名-->
            <package name="com.mucfc.act.vo"/>
       </typeAliases>
+``` 
 
  4. 要在mybatis.xml中增加分页插件，添加如下配置即可:
+``` 
       <plugins>
           <!-- mysql分页查询拦截器, 你可以根据你的数据库类型修改相应的dialectClass -->
           <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
                <property name="dialectClass" value="com.github.walker.mybatis.paginator.dialect.MySQLDialect"/>
           </plugin>
       </plugins>
-
+``` 
      并且，你的工程也要引入分页插件包mybatis-paginator.jar，您可以在这个链接页面找到下载地址:
                                 https://github.com/HuQingmiao/mybatis-paginator
 
