@@ -5,63 +5,55 @@ import com.github.walker.mybatis.daoj.utils.MappingUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 
 /**
  * 程序名称：mybatis-daoj，即依赖mybatis的DAO层代码生成器。
  *
  * @author HuQingmiao
- *         <p/>
- *         <p>
- *         <pre>
  *
- *                 一. 使用说明:
+ * 一. 使用说明:
  *
- *                 1. 打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类所有的包、以及生成代码的输出目录。
+ * 1. 打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类所在的包名，以及生成代码的输出目录。
  *
- *                 2. 双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：PO实体类、DAO接口类、Mapper.xml，
- *                      将这些文件复制到你工程的对应目录。
+ * 2. 双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：vo实体类,dao接口类,mapper.xml，
+ *      将这些文件复制到你工程的对应目录。
  *
- *                 3. 要让生成的代码运行起来，还需要在mybatis.xml中增加如下配置:
- *                      因为生成的Mapper.xml中的"resultType" 指定的是PO实体类的别名，需要在mybatis.xml中通过以下配置定义别名：
- *                      <typeAliases>
- *                           <package name="com.mucfc.act.po"/><!-- 为po包下的所有类自动定义别名-->
- *                      </typeAliases>
+ * 3. 要让生成的代码运行起来，还需要在mybatis.xml中增加如下配置:
+ *      <typeAliases>
+ *           <!-- 为vo包下的所有类自动定义别名, 因为生成的mapper.xml中的"resultType" 指定的是vo实体类的别名-->
+ *           <package name="com.mucfc.act.vo"/>
+ *      </typeAliases>
  *
- *                 4. 要在mybatis.xml中增加分页插件，添加如下配置即可:
- *                      <plugins>
- *                          <!-- 分页查询拦截器 -->
- *                          <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
- *                      </plugins>
+ * 4. 要在mybatis.xml中增加分页插件，添加如下配置即可:
+ *      <plugins>
+ *          <!-- mysql分页查询拦截器, 你可以根据你的数据库类型修改相应的dialectClass -->
+ *          <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
+ *               <property name="dialectClass" value="com.github.walker.mybatis.paginator.dialect.MySQLDialect"/>
+ *          </plugin>
+ *      </plugins>
  *
- *                     并且，你的工程也要引入相应jar包:
- *                          <dependency><!-- mybatis分页控件 -->
- *                              <groupId>walker</groupId>
- *                              <artifactId>mybatis-paginator</artifactId>
- *                              <version>20150827</version>
- *                          </dependency>
+ *     并且，你的工程也要引入分页插件包mybatis-paginator.jar，您可以在这个链接页面找到下载地址:
+ *                                https://github.com/HuQingmiao/mybatis-paginator
  *
- *                 5. 现在你的Service代码就可以直接调用DAO层了，可参考：DaoCallDemo.java。
  *
- *                 二. 使用建议:
- *                 1. 本程序生成的DAO类没有任何接口方法，只是继承"BasicDao.java"；但可在此类中增加你的特性方法，比如复杂条件的查询。
- *                 2. 如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的'useGeneratedKeys="true" keyProperty="xx"'才可运行。
+ * 5. 现在可以在你的service层代码调用dao层了。
  *
- *                 </pre>
- *         </p>
+ * 6. 注意事项:
+ *    *本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在其子接口中扩展你的个性方法。
+ *    *如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的'useGeneratedKeys="true" keyProperty="xx"'。
  */
 public class Generator {
-
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     public static void main(String[] args) {
-        new Generator().generator();
+        try {
+            new Generator().generator();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
+    
     private void generator() {
         //BasicEntity类名
         String basicEntity = ConfigLoader.getBasicEntity();
@@ -112,8 +104,41 @@ public class Generator {
                 this.createFile(codeStr, daoPackageDirc.getCanonicalPath()
                         + File.separator + MappingUtil.getEntityName(tables[i]) + "Mapper.xml");
 
+                //复制DAO/VO基类
+                InputStream is = Generator.class.getClassLoader().getResourceAsStream("BasicDao.java");
+                File basicDaoFile = new File(outputDirc, "BasicDao.java");
+                this.writeToFile(is, basicDaoFile);
+
+                is = Generator.class.getClassLoader().getResourceAsStream("BasicDao.java");
+                File basicVoFile = new File(outputDirc, "BasicVo.java");
+                this.writeToFile(is, basicVoFile);
+
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
+            }
+        }
+    }
+
+    private void writeToFile(InputStream is, File file) throws Exception {
+        FileOutputStream os = null;
+        try {
+            os = new FileOutputStream(file);
+            byte[] bytes = new byte[5 * 1024];
+            int len = 0;
+            while ((len = is.read(bytes)) > 0) {
+                os.write(bytes, 0, len);
+            }
+            os.flush();
+        } catch (Exception e) {
+            log.error("", e);
+            throw e;
+        } finally {
+            try {
+                if (os != null) {
+                    os.close();
+                }
+            } catch (Exception e) {
+                log.error("", e);
             }
         }
     }

@@ -1,1 +1,1 @@
-java -jar mybatis-daoj-20150620.jar
+java -jar mybatis-daoj-1.2.0.jar
