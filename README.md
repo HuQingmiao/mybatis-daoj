@@ -37,6 +37,7 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
           </plugin>
       </plugins>
 ``` 
+
      并且，你的工程也要引入分页插件包mybatis-paginator.jar，可在这这链接页面找到下载地址：
      [https://github.com/HuQingmiao/mybatis-paginator](https://github.com/HuQingmiao/mybatis-paginator)
 
