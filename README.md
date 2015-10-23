@@ -49,7 +49,7 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
 
 
 
-## 参与本开源项目开发，请知道：
+## 参与本项目开发，请知道：
 * 编译环境
      * Windows or Linux
      * Java 7+
