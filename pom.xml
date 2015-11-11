@@ -11,6 +11,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+
+        <project.dirc>D:/intellj-projects</project.dirc>
     </properties>
 
     <dependencies>
@@ -37,7 +39,7 @@
             <artifactId>mybatis-paginator</artifactId>
             <version>1.2.0</version>
             <scope>system</scope>
-            <systemPath>D:/intellj-projects/mybatis-daoj/lib/mybatis-paginator-1.2.0.jar</systemPath>
+            <systemPath>${project.dirc}/mybatis-daoj/lib/mybatis-paginator-1.2.0.jar</systemPath>
         </dependency>
 
         <dependency>
