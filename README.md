@@ -3,7 +3,7 @@
 > QQ：443770574
 
 
-## mybatis-daoj-1.2.0
+## mybatis-daoj-1.2.1
 mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,dao接口类,mapper.xml三种源文件。mybatis-daoj与其它代码生成器不一样，优点如下：
 <p/>1. 对DAO接口进行了高度抽象，统一了增、删、查、改的方法签名，使得调用它的业务层代码简洁一体。
 <p/>2. 生成的代码量很少，非常简洁，也易于维护：
