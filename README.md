@@ -15,7 +15,7 @@ mybatis-daoj，为采用myBatis的项目生成DAO层代码，包括vo实体类,d
 
 
 ## 本工具使用说明：
-1.先下载mybatis-daoj.jar(链接: http://pan.baidu.com/s/1mgiv8mc 密码: 2vk2)，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类所在的包名，以及生成代码的输出目录。
+1.先下载mybatis-daoj.jar(链接: http://pan.baidu.com/s/1v9xym 密码: mvgp)，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类所在的包名，以及生成代码的输出目录。
 
 2.双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：vo实体类,dao接口类,mapper.xml，
       将这些文件复制到你工程的对应目录。
