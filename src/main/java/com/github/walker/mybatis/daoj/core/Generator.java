@@ -109,7 +109,7 @@ public class Generator {
                 File basicDaoFile = new File(outputDirc, "BasicDao.java");
                 this.writeToFile(is, basicDaoFile);
 
-                is = Generator.class.getClassLoader().getResourceAsStream("BasicDao.java");
+                is = Generator.class.getClassLoader().getResourceAsStream("BasicVo.java");
                 File basicVoFile = new File(outputDirc, "BasicVo.java");
                 this.writeToFile(is, basicVoFile);
 
