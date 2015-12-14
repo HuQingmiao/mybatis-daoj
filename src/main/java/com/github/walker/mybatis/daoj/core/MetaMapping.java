@@ -60,9 +60,9 @@ class MetaMapping {
             //log.info(">>>>"+conn.getCatalog());
 
             rs = conn.getMetaData().getPrimaryKeys(conn.getCatalog(), null
-                    , tableName.toUpperCase());
+                    , tableName);
             for (; rs.next(); ) {
-                keySet.add(rs.getString("COLUMN_NAME").toLowerCase());
+                keySet.add(rs.getString("COLUMN_NAME"));
             }
             rs.close();
 
