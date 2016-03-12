@@ -4,8 +4,7 @@
 
 
 ## mybatis-daoj-1.2.1
-&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj，是我基于myBatis极简用法的思路，而编写的DAO层代码生成器。 关于myBatis用法的极简用法，请阅读博文：
-http://my.oschina.net/HuQingmiao/blog/636161 。
+&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj，是我基于myBatis极简用法的思路，而编写的DAO层代码生成器。关于myBatis的极简用法，请阅读博文：http://my.oschina.net/HuQingmiao/blog/636161 。
 
 <p/>&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj与其它代码生成器不一样，优点如下：
 1. 对DAO接口进行了高度抽象，把增、删、查、改的操作抽象成11个标准的接口方法，使得调用它的业务层代码简洁一体。
@@ -27,7 +26,7 @@ http://my.oschina.net/HuQingmiao/blog/636161 。
       </typeAliases>
 ``` 
 
-4.要在mybatis.xml中增加分页插件，添加如下配置即可:
+4. 要在mybatis.xml中增加分页插件，添加如下配置即可:
 ``` 
       <plugins>
           <!-- mysql分页查询拦截器, 你可以根据你的数据库类型修改相应的dialectClass -->
