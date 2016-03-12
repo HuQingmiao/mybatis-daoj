@@ -4,7 +4,7 @@
 
 
 ## mybatis-daoj-1.2.1
-&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj，是我基于myBatis极简用法的思路，而编写的DAO层代码生成器。 关于myBatis用法的极简用法，请阅读博文：<p/>
+&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj，是我基于myBatis极简用法的思路，而编写的DAO层代码生成器。 关于myBatis用法的极简用法，请阅读博文：
 http://my.oschina.net/HuQingmiao/blog/636161 。
 
 <p/>&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj与其它代码生成器不一样，优点如下：
