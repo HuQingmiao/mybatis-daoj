@@ -39,7 +39,7 @@ http://my.oschina.net/HuQingmiao/blog/636161 。
 &nbsp;&nbsp;&nbsp;&nbsp;并且，你的工程也要引入分页插件包mybatis-paginator.jar，你可以在这个链接页面找到下载地址：
 &nbsp;&nbsp;&nbsp;&nbsp;[https://github.com/HuQingmiao/mybatis-paginator](https://github.com/HuQingmiao/mybatis-paginator)
 
-5.注意事项:
+5. 注意事项:
 * 本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在子接口中扩展你的个性方法。
 * 如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的：
                                                               'useGeneratedKeys="true" keyProperty="xx"' 。
