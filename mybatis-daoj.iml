@@ -26,5 +26,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.30" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle:ojdbc14:10.2.0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.vertica:vertica-jdbc:7.1.2-0" level="project" />
   </component>
 </module>
