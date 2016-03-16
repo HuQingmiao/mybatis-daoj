@@ -3,10 +3,10 @@
 
 <daoj>
     <dataSource>
-        <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://10.75.204.32:3306/act_dev"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="jdbcDriver" value="com.vertica.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:vertica://10.75.201.41:5433/dws"/>
+        <property name="username" value="dbadmin"/>
+        <property name="password" value="vertica"/>
     </dataSource>
 
 
@@ -29,7 +29,7 @@
         <property name="outputDirc" value="generated-files"/>
 
         <!-- 列出要生成的表名, 多个表可以逗号(',')分隔。 注意，数据库表必须指定了主键列。 -->
-        <property name="tables" value="book"/>
+        <property name="tables" value="dwa_fat.pub_peruser_info"/>
 
     </params>
 
