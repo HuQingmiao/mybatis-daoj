@@ -2,3 +2,5 @@
 
 /target
 /src/main/webapp/WEB-INF/classes
+
+/release/generated-files
