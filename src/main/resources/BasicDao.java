@@ -15,19 +15,19 @@ public interface BasicDao {
 
     public int save(BasicVo basicVo);
 
-    public void saveBatch(List list);
+    public int saveBatch(List list);
 
 
     public int update(BasicVo basicVo);
 
     public int updateIgnoreNull(BasicVo basicVo);
 
-    public void updateBatch(List list);
+    public int updateBatch(List list);
 
 
     public int delete(BasicVo basicVo);
 
-    public void deleteBatch(List list);
+    public int deleteBatch(List list);
 
     public int deleteByPK(Long id);
 
