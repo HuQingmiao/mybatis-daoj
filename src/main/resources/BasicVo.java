@@ -1,5 +1,6 @@
 package your.project.vo;  //改为你工程的相应package
 
+//import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +15,6 @@ import java.util.HashMap;
  * Created by HuQingmiao on 2015-5-13.
  */
 
-import org.json.JSONObject;
 import java.util.*;
 
 /**
@@ -129,21 +129,21 @@ public abstract class BasicVo implements Serializable {
         return hashCode;
     }
 
-    @Override
-    public String toString() {
-        Map<String, Object> keyObjectMap = new HashMap<String, Object>();
-        try {
-            for (Iterator<String> it = fieldNameTypeMap.keySet().iterator(); it.hasNext(); ) {
-                String filedName = it.next();
-                keyObjectMap.put(filedName, this.get(filedName));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String str = JSONObject.valueToString(keyObjectMap);
-        keyObjectMap.clear();
-        return str;
-    }
+//    @Override
+//    public String toString() {
+//        Map<String, Object> keyObjectMap = new HashMap<String, Object>();
+//        try {
+//            for (Iterator<String> it = fieldNameTypeMap.keySet().iterator(); it.hasNext(); ) {
+//                String filedName = it.next();
+//                keyObjectMap.put(filedName, this.get(filedName));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        String str = JSONObject.toJSONString(keyObjectMap);
+//        keyObjectMap.clear();
+//        return str;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -154,8 +154,8 @@ public abstract class BasicVo implements Serializable {
             return false;
         }
 
-        BasicVo vo2= ((BasicVo) o);
-        HashMap<String, Class<?>> ftMap2 =vo2.fieldNameTypeMap();
+        BasicVo vo2 = ((BasicVo) o);
+        HashMap<String, Class<?>> ftMap2 = vo2.fieldNameTypeMap();
         if (fieldNameTypeMap.size() != ftMap2.size()) {
             return false;
         }
@@ -175,5 +175,4 @@ public abstract class BasicVo implements Serializable {
 
         return true;
     }
-
 }
