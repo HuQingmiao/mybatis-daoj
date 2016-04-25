@@ -62,7 +62,8 @@ class MetaMapping {
             rs = conn.getMetaData().getPrimaryKeys(conn.getCatalog(), null
                     , tableName);
             for (; rs.next(); ) {
-                keySet.add(rs.getString("COLUMN_NAME"));
+                String pk = rs.getString("COLUMN_NAME").toLowerCase();
+                keySet.add(pk);
             }
             rs.close();
 

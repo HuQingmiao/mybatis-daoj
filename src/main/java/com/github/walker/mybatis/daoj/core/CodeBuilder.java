@@ -152,6 +152,7 @@ class CodeBuilder {
         for (; it.hasNext(); ) {
             String colName = (String) it.next();
             MetaDataDescr md = colNameMetaMap.get(colName);
+
             if (md.isPk()) {
                 pkColFieldMap.put(colName, md.getFieldName());
             }
