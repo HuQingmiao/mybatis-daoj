@@ -11,8 +11,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-
-        <project.dirc>D:/intellj-projects/mybatis-daoj</project.dirc>
     </properties>
 
     <dependencies>
@@ -39,7 +37,7 @@
             <artifactId>mybatis-paginator</artifactId>
             <version>1.2.0</version>
             <scope>system</scope>
-            <systemPath>${project.dirc}/lib/mybatis-paginator-1.2.0.jar</systemPath>
+            <systemPath>${basedir}/lib/mybatis-paginator-1.2.1.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -48,18 +46,18 @@
             <version>5.1.30</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>10.2.0.3.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.oracle</groupId>-->
+            <!--<artifactId>ojdbc14</artifactId>-->
+            <!--<version>10.2.0.3.0</version>-->
+        <!--</dependency>-->
 
         <!-- vertica数据库驱动 -->
-        <dependency>
-            <groupId>com.vertica</groupId>
-            <artifactId>vertica-jdbc</artifactId>
-            <version>7.1.2-0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.vertica</groupId>-->
+            <!--<artifactId>vertica-jdbc</artifactId>-->
+            <!--<version>7.1.2-0</version>-->
+        <!--</dependency>-->
 
 
     </dependencies>

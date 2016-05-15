@@ -154,7 +154,7 @@ public class Generator {
             throws IOException {
         OutputStreamWriter osw = null;
         try {
-            osw = new OutputStreamWriter(new FileOutputStream(fileName));
+            osw = new OutputStreamWriter(new FileOutputStream(fileName),"UTF-8");
             osw.write(fileContent, 0, fileContent.length());
             osw.flush();
 

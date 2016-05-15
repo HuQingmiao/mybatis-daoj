@@ -3,33 +3,32 @@
 
 <daoj>
     <dataSource>
-        <property name="jdbcDriver" value="com.vertica.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:vertica://10.75.201.41:5433/dws"/>
-        <property name="username" value="dbadmin"/>
-        <property name="password" value="vertica"/>
+        <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="walker"/>
     </dataSource>
 
 
     <params>
         <!-- 指定实体类基类, 默认为 BasicVo -->
-        <property name="basicEntity" value="com.mucfc.act.common.BasicVo"/>
+        <property name="basicEntity" value="com.github.walker.mybatis.demo.common.BasicVo"/>
 
         <!-- 指定DAO基类, 默认为 BasicDao -->
-        <property name="basicDao" value="com.mucfc.act.common.BasicDao"/>
-
+        <property name="basicDao" value="com.github.walker.mybatis.demo.common.BasicDao"/>
 
         <!-- 设定生成后的实体类所在的包 -->
-        <property name="entityPackage" value="com.mucfc.act.vo"/>
+        <property name="entityPackage" value="com.github.walker.mybatis.demo.vo"/>
 
         <!-- 设定生成后的DAO接口所在的包 -->
-        <property name="daoPackage" value="com.mucfc.act.dao"/>
+        <property name="daoPackage" value="com.github.walker.mybatis.demo.dao"/>
 
 
         <!-- 设定代码生成的输出目录, 支持相对路径或绝对路径 -->
         <property name="outputDirc" value="generated-files"/>
 
         <!-- 列出要生成的表名, 多个表可以逗号(',')分隔。 注意，数据库表必须指定了主键列。 -->
-        <property name="tables" value="dwa_fat.pub_peruser_info"/>
+        <property name="tables" value="book,book_editor,editor"/>
 
     </params>
 
