@@ -152,6 +152,7 @@ class CodeBuilder {
         for (; it.hasNext(); ) {
             String colName = (String) it.next();
             MetaDataDescr md = colNameMetaMap.get(colName);
+
             if (md.isPk()) {
                 pkColFieldMap.put(colName, md.getFieldName());
             }
@@ -215,7 +216,7 @@ class CodeBuilder {
 
 
         ///////////////////// saveBatch
-        buff.append("\n    <!------- 适用于mysql的批量新增 ------->\n");
+        buff.append("\n    <!------- batch insert for mysql ------->\n");
         buff.append("    <insert id=\"saveBatch\">\n");
         buff.append("        INSERT INTO " + tableName + "( ");
 
@@ -264,7 +265,7 @@ class CodeBuilder {
         valuesStr.delete(0, valuesStr.length());
 
 
-        buff.append("\n    <!------- 适用于oracle的批量新增 ------->\n");
+        buff.append("\n    <!------- batch insert for oracle ------->\n");
         buff.append("    <!--\n");
         buff.append("    <insert id=\"saveBatch\">\n");
         buff.append("        INSERT INTO " + tableName + "( ");
