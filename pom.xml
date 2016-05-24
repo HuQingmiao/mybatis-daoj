@@ -34,12 +34,12 @@
             <version>20140107</version>
         </dependency>
 
-        <dependency><!-- mybatis分页控件 -->
+        <dependency>
             <groupId>com.github.walker</groupId>
             <artifactId>mybatis-paginator</artifactId>
-            <version>1.2.0</version>
-            <scope>system</scope>
-            <systemPath>${project.dirc}/lib/mybatis-paginator-1.2.1.jar</systemPath>
+            <version>1.2.2</version>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.dirc}/lib/mybatis-paginator-1.2.2.jar</systemPath>-->
         </dependency>
 
         <dependency>
