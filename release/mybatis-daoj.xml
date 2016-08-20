@@ -4,9 +4,9 @@
 <daoj>
     <dataSource>
         <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://10.75.201.76:3306/test"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"/>
         <property name="username" value="root"/>
-        <property name="password" value="654321"/>
+        <property name="password" value="walker"/>
     </dataSource>
 
 
