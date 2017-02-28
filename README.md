@@ -14,7 +14,7 @@
 
 
 ## 使用说明
-&nbsp;&nbsp;&nbsp;1.先下载mybatis-daoj.zip(链接: http://pan.baidu.com/s/1qYEXXfQ)，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类的包名，以及生成代码的输出目录。
+&nbsp;&nbsp;&nbsp;1.先下载mybatis-daoj.zip(链接: http://pan.baidu.com/s/1qYEXXfQ )，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类的包名，以及生成代码的输出目录。
 
 &nbsp;&nbsp;&nbsp;2.双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：vo实体类,dao接口类,mapper.xml，
       将这些文件复制到你工程的对应目录。
