@@ -216,7 +216,7 @@ class CodeBuilder {
 
 
         ///////////////////// saveBatch
-        buff.append("\n    <!------- batch insert for mysql ------->\n");
+        buff.append("\n    <!-- batch insert for mysql -->\n");
         buff.append("    <insert id=\"saveBatch\">\n");
         buff.append("        INSERT INTO " + tableName + "( ");
 
@@ -265,7 +265,7 @@ class CodeBuilder {
         valuesStr.delete(0, valuesStr.length());
 
 
-        buff.append("\n    <!------- batch insert for oracle ------->\n");
+        buff.append("\n    <!-- batch insert for oracle -->\n");
         buff.append("    <!--\n");
         buff.append("    <insert id=\"saveBatch\">\n");
         buff.append("        INSERT INTO " + tableName + "( ");
