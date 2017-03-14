@@ -482,7 +482,7 @@ class CodeBuilder {
 
         buff.append("\n    <!-- ============================= SELECT ============================= -->\n");
         buff.append("    <select id=\"count\" resultType=\"java.lang.Long\">\n");
-        buff.append("        SELECT COUNT(1) FROM " + tableName + "\n");
+        buff.append("        SELECT COUNT(*) FROM " + tableName + "\n");
         buff.append("    </select>\n\n");
 
 
