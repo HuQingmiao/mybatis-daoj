@@ -3,7 +3,7 @@ package your.project.dao;  //改为你工程的相应package
 import your.project.vo.BasicVo;
 import com.github.walker.mybatis.paginator.PageBounds;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
