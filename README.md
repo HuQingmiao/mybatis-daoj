@@ -1,10 +1,9 @@
-﻿## 联系我
+﻿### Mybatis-daoj
+&nbsp;&nbsp;&nbsp;&nbsp;Mybatis-daoj，是我基于myBatis极简用法的思路，而编写的DAO层代码生成器。关于myBatis的极简用法，请阅读博文：http://my.oschina.net/HuQingmiao/blog/636161 。
+
+### 联系我
 > 个人博客：[http://my.oschina.net/HuQingmiao](http://my.oschina.net/HuQingmiao)；
 > QQ：443770574
-
-
-## mybatis-daoj
-&nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj，是我基于myBatis极简用法的思路，而编写的DAO层代码生成器。关于myBatis的极简用法，请阅读博文：http://my.oschina.net/HuQingmiao/blog/636161 。
 
 <p/>
 &nbsp;&nbsp;&nbsp;&nbsp;mybatis-daoj与其它代码生成器不一样，优点如下：
@@ -13,7 +12,7 @@
 * 生成的代码可以适应90%以上的场景；对于另外10%的个性场景，你可以通过扩展dao接口，增加新的方法实现。
 
 
-## 使用说明
+### 使用说明
 &nbsp;&nbsp;&nbsp;1.先下载mybatis-daoj.zip(链接: http://pan.baidu.com/s/1bV17Gi )，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类的包名，以及生成代码的输出目录。
 
 &nbsp;&nbsp;&nbsp;2.双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：vo实体类,dao接口类,mapper.xml，
@@ -34,9 +33,8 @@
 
 
 ## 开发&编译
-     * Windows or Linux
      * Java 7
-     * Maven 3.0.5+
-     * IntelliJ IDEA / Eclipse
+     * Maven 3.2.5+
+     * IntelliJ IDEA
 
 
