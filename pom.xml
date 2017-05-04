@@ -36,8 +36,8 @@
             <groupId>com.github.walker</groupId>
             <artifactId>mybatis-paginator</artifactId>
             <version>1.2.4</version>
-            <!--<scope>system</scope>-->
-            <!--<systemPath>${basedir}/lib/mybatis-paginator-1.2.3.jar</systemPath>-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/mybatis-paginator-1.2.3.jar</systemPath>
         </dependency>
 
         <dependency>

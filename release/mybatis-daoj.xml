@@ -28,7 +28,10 @@
         <property name="outputDirc" value="generated-files"/>
 
         <!-- 列出要生成的表名, 多个表可以逗号(',')分隔。 注意，数据库表必须指定了主键列。 -->
-        <property name="tables" value="menu,book_editor,editor,book "/>
+        <property name="tables" value="menu,
+		book_editor,
+		editor,
+		book "/>
 
     </params>
 

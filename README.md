@@ -9,18 +9,31 @@
 > QQ：443770574
 
 ### 使用说明
-&nbsp;&nbsp;&nbsp;1.先下载mybatis-daoj.zip(链接: http://pan.baidu.com/s/1bV17Gi )，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类的包名，以及生成代码的输出目录。
+&nbsp;&nbsp;&nbsp;1.先下载mybatis-daoj.zip(链接: http://pan.baidu.com/s/1hsutofM )，解压后打开mybatis-daoj.xml，配置数据库连接，设置实体类、DAO接口类的包名，以及生成代码的输出目录。
 
 &nbsp;&nbsp;&nbsp;2.双击gen.bat 或执行:java -jar mybatis-daoj-xxx.jar 以运行本程序。本程序将生成三种文件：vo实体类,dao接口类,mapper.xml，
       将这些文件复制到你工程的对应目录。
 
-&nbsp;&nbsp;&nbsp;3.要让生成的代码运行起来，还需要在mybatis.xml中增加如下配置(也可通过在spring.xml为vo指定别名):
+&nbsp;&nbsp;&nbsp;3.要让生成的代码运行起来，还需要在mybatis.xml中增加如下配置:
 ``` 
-      <typeAliases>
-           <!-- 为vo包下的所有类自动定义别名, 因为生成的mapper.xml中的"resultType" 指定的是vo实体类的别名-->
-           <package name="xx.xx.xx.vo"/>
-      </typeAliases>
+    <typeAliases>
+         <!-- 为vo包下的所有类自动定义别名, 因为生成的mapper.xml中的"resultType" 指定的是vo实体类的别名-->
+         <package name="xx.xx.xx.vo"/>
+    </typeAliases>
 ``` 
+&nbsp;&nbsp;&nbsp;或者在spring配置文件中像这样增加vo包的别名配置：
+
+```
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <!-- 为其下的包定义别名 -->
+        <property name="typeAliasesPackage" value="xx.xx.xx.vo"/>
+
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+        <property name="mapperLocations" value="classpath*:com/github/walker/taskcenter/dao/*.xml"/>
+    </bean>
+```
 
 &nbsp;&nbsp;&nbsp;4.注意事项:
 * 本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在子接口中扩展你的个性方法。
