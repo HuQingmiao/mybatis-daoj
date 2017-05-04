@@ -21,7 +21,7 @@
          <package name="xx.xx.xx.vo"/>
     </typeAliases>
 ``` 
-&nbsp;&nbsp;&nbsp;或者在spring配置文件中像下面这样增加vo包的别名配置(如果你的项目用了spring的话)：
+&nbsp;&nbsp;&nbsp;或者在spring配置文件中像下面这样增加vo类的别名配置(如果你的项目用了spring的话)：
 
 ```
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
