@@ -1,6 +1,7 @@
 package your.project.vo;  //改为你工程的相应package
 
-//import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -129,21 +130,21 @@ public abstract class BasicVo implements Serializable {
         return hashCode;
     }
 
-//    @Override
-//    public String toString() {
-//        Map<String, Object> keyObjectMap = new HashMap<String, Object>();
-//        try {
-//            for (Iterator<String> it = fieldNameTypeMap.keySet().iterator(); it.hasNext(); ) {
-//                String filedName = it.next();
-//                keyObjectMap.put(filedName, this.get(filedName));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        String str = JSONObject.toJSONString(keyObjectMap);
-//        keyObjectMap.clear();
-//        return str;
-//    }
+    @Override
+    public String toString() {
+        Map<String, Object> keyObjectMap = new HashMap<String, Object>();
+        try {
+            for (Iterator<String> it = fieldNameTypeMap.keySet().iterator(); it.hasNext(); ) {
+                String filedName = it.next();
+                keyObjectMap.put(filedName, this.get(filedName));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String str = JSONObject.toJSONString(keyObjectMap);
+        keyObjectMap.clear();
+        return str;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -62,9 +62,9 @@
 
         <!-- vertica数据库驱动 -->
         <!--<dependency>-->
-            <!--<groupId>com.vertica</groupId>-->
-            <!--<artifactId>vertica-jdbc</artifactId>-->
-            <!--<version>7.1.2-0</version>-->
+        <!--<groupId>com.vertica</groupId>-->
+        <!--<artifactId>vertica-jdbc</artifactId>-->
+        <!--<version>7.1.2-0</version>-->
         <!--</dependency>-->
 
     </dependencies>
@@ -84,61 +84,103 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <!--<version>3.0.2</version>-->
                 <executions>
+                    <!-- 定义在prepare-package时将classes/ 打jar -->
                     <execution>
-                        <phase>compile</phase>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>run</goal>
+                            <goal>jar</goal>
                         </goals>
                         <configuration>
-                            <target>
-                                <!--
-                                <copy file="src/main/java/a.xml" includes="**/*.xml"
-                                      tofile="target/classes/a.xml" overwrite="true"/>
-                                -->
-                                <!--
-                                <copy todir="target/classes" overwrite="true">
-                                    <fileset dir="src/main/java" includes="**/*Mapper.xml"/>
-                                </copy>
-                                -->
-                            </target>
+                            <includes>
+                                <include>**/*.class</include>
+                                <include>**/*Mapper.xml</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!-- not append assembly id in release file name -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <finalName>${project.artifactId}</finalName>
+                    <descriptors>
+                        <descriptor>assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
                 <executions>
                     <execution>
+                        <id>make-assembly</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>single</goal>
                         </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.handlers</resource>
-                                </transformer>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/spring.schemas</resource>
-                                </transformer>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.github.walker.mybatis.daoj.core.Generator</mainClass>
-                                </transformer>
-                            </transformers>
-
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-antrun-plugin</artifactId>-->
+            <!--<version>1.6</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>compile</phase>-->
+            <!--<goals>-->
+            <!--<goal>run</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<target>-->
+            <!--&lt;!&ndash;-->
+            <!--<copy file="src/main/java/a.xml" includes="**/*.xml"-->
+            <!--tofile="target/classes/a.xml" overwrite="true"/>-->
+            <!--&ndash;&gt;-->
+            <!--&lt;!&ndash;-->
+            <!--<copy todir="target/classes" overwrite="true">-->
+            <!--<fileset dir="src/main/java" includes="**/*Mapper.xml"/>-->
+            <!--</copy>-->
+            <!--&ndash;&gt;-->
+            <!--</target>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-shade-plugin</artifactId>-->
+            <!--<version>2.3</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>shade</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<transformers>-->
+            <!--<transformer-->
+            <!--implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">-->
+            <!--<resource>META-INF/spring.handlers</resource>-->
+            <!--</transformer>-->
+            <!--<transformer-->
+            <!--implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">-->
+            <!--<resource>META-INF/spring.schemas</resource>-->
+            <!--</transformer>-->
+            <!--<transformer-->
+            <!--implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+            <!--<mainClass>com.github.walker.mybatis.daoj.core.Generator</mainClass>-->
+            <!--</transformer>-->
+            <!--</transformers>-->
+
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
 
         </plugins>
     </build>

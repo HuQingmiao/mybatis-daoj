@@ -13,25 +13,25 @@ import java.util.Map;
  */
 public interface BasicDao {
 
-    public int save(BasicVo basicVo);
+    int save(BasicVo basicVo);
 
-    public int saveBatch(List list);
-
-
-    public int update(BasicVo basicVo);
-
-    public int updateIgnoreNull(BasicVo basicVo);
-
-    public int updateBatch(List list);
+    int saveBatch(List list);
 
 
-    public int delete(BasicVo basicVo);
+    int update(BasicVo basicVo);
 
-    public int deleteBatch(List list);
+    int updateIgnoreNull(BasicVo basicVo);
 
-    public int deleteByPK(Long id);
+    int updateBatch(List list);
 
-    public int deleteAll();
+
+    int delete(BasicVo basicVo);
+
+    int deleteBatch(List list);
+
+    int deleteByPK(Long id);
+
+    int deleteAll();
 
 
     public long count();
