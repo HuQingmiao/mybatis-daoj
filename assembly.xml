@@ -18,7 +18,8 @@
             <includes>
                 <include>*.properties</include>
                 <include>*.xml</include>
-                <include>*.java</include>
+                <include>BasicDao.java</include>
+                <include>BasicVo.java</include>
             </includes>
             <excludes>
                 <exclude>com/**</exclude>
