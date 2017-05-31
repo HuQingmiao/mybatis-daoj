@@ -10,7 +10,7 @@
 > QQ：443770574
 
 ### 使用说明
-&nbsp;&nbsp;&nbsp;1. 下载mybatis-daoj.tar.gz (链接: http://pan.baidu.com/s/1bpzUqfH )，解压后打开 conf/mybatis-daoj.xml，配置数据库连接，设置表名，以及生成代码的输出目录。
+&nbsp;&nbsp;&nbsp;1. 下载mybatis-daoj.tar.gz (链接: http://pan.baidu.com/s/1pKRag8j )，解压后打开 conf/mybatis-daoj.xml，配置数据库连接，设置表名，以及生成代码的输出目录。
 
 &nbsp;&nbsp;&nbsp;2. 运行 bin/start.bat, 将生成相应代码到设定的输出目录。 对于每个表，都将生成对应的1个vo实体类、1个dao接口类、1个mapper.xml; 将这些文件复制到你工程的对应目录。
 
