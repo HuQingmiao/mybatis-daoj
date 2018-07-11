@@ -6,11 +6,6 @@
  - 生成的代码可以适应90%以上的场景；对于另外10%的个性场景，你可以通过扩展dao接口，增加新的方法实现。
 
 
-### 联系我
-> 个人博客：[http://my.oschina.net/HuQingmiao](http://my.oschina.net/HuQingmiao)；
-> QQ：443770574
-
-
 ### 使用说明
 &nbsp;&nbsp;&nbsp;1. 下载源码，编译、打包，得到 mybatis-daoj.tar.gz 。
 
@@ -27,3 +22,8 @@
      * Java 7
      * Maven 3.2.5+
      * IntelliJ IDEA
+
+
+### 联系我
+> 个人博客：[http://my.oschina.net/HuQingmiao](http://my.oschina.net/HuQingmiao)；
+> QQ：443770574
