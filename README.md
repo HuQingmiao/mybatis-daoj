@@ -19,7 +19,7 @@
 &nbsp;&nbsp;&nbsp;3. 运行 bin/start.bat， 本工具会为每个表生成1个vo实体类、1个dao接口类、1个mapper.xml。
 
 &nbsp;&nbsp;&nbsp;4. 将生成的代码复制到你的工程目录。注意:
-* 本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在子接口中扩展你的个性方法。
+* 本工具生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在子接口中扩展你的个性方法。
 * 如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的：`useGeneratedKeys="true" keyProperty="xx"` 。
     
 
