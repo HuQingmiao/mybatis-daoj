@@ -16,7 +16,7 @@
 
 &nbsp;&nbsp;&nbsp;2. 解压 mybatis-daoj.tar.gz， 打开 conf/mybatis-daoj.xml，配置数据库连接、表名、输出目录。
 
-&nbsp;&nbsp;&nbsp;3. 运行 bin/start.bat 以生成代码。 对于每个表，会生成对应的1个vo实体类、1个dao接口类、1个mapper.xml。
+&nbsp;&nbsp;&nbsp;3. 运行 bin/start.bat， 本工具会为每个表生成1个vo实体类、1个dao接口类、1个mapper.xml。
 
 &nbsp;&nbsp;&nbsp;4. 将生成的代码复制到你的工程目录。注意:
 * 本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在子接口中扩展你的个性方法。
