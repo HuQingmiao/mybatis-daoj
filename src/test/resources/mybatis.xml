@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    
+    <properties resource="config.properties" />
+
+
+    <settings>
+        <!-- 配置默认的执行器. SIMPLE 就是普通的执行器; REUSE 执行器会重用预处理语句(prepared statements); BATCH 执行器将重用语句并执行批量更新. 默认为SIMPLE.-->
+        <setting name="defaultExecutorType" value="REUSE"/>
+
+        <!-- 设置超时时间,它决定驱动等待数据库响应的秒数. 默认为Not Set. -->
+        <setting name="defaultStatementTimeout" value="25"/>
+
+        <!-- 是否开启自动驼峰命名规则(camel case)映射,即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射.默认为false.-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!-- myBatis 利用本地缓存机制(Local Cache)防止循环引用(circular references)和加速重复嵌套查询.
+                           若设置为 STATEMENT, 本地会话仅用在语句执行上,对相同SqlSession的不同调用将不会共享数据.
+                           默认值为 SESSION, 这种情况下会缓存一个会话中执行的所有查询. -->
+        <setting name="localCacheScope" value="STATEMENT"/>
+
+        <!-- 当没有为参数提供特定的 JDBC 类型时,为空值指定 JDBC 类型. 某些驱动需要指定列的 JDBC 类型,多数情况直接用一般类型即可,比如 NULL,VARCHAR 或 OTHER. 默认为OTHER.-->
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+
+        <!-- 指定哪个对象的方法触发一次延迟加载。默认为equals,clone,hashCode,toString. -->
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
+
+
+    <plugins>
+        <!-- 分页查询拦截器 -->
+        <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
+            <property name="dialectClass" value="com.github.walker.mybatis.paginator.dialect.MySQLDialect"/>
+            <!-- <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySqlDialect"/>-->
+        </plugin>
+    </plugins>
+
+    
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <mappers>
+        <mapper resource="your/project/demo/dao/BookMapper.xml"/>
+        <mapper resource="your/project/demo/dao/EditorMapper.xml"/>
+        <mapper resource="your/project/demo/dao/BookEditorMapper.xml"/>
+    </mappers>
+
+</configuration>

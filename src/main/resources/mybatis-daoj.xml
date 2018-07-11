@@ -11,23 +11,23 @@
 
     <params>
         <!-- 指定实体类基类, 默认为 BasicVo -->
-        <property name="basicEntity" value="com.github.walker.mybatis.demo.common.BasicVo"/>
+        <property name="basicEntity" value="your.project.demo.common.BasicVo"/>
 
         <!-- 指定DAO基类, 默认为 BasicDao -->
-        <property name="basicDao" value="com.github.walker.mybatis.demo.common.BasicDao"/>
+        <property name="basicDao" value="your.project.demo.common.BasicDao"/>
 
         <!-- 设定生成后的实体类所在的包 -->
-        <property name="entityPackage" value="com.github.walker.mybatis.demo.vo"/>
+        <property name="entityPackage" value="your.project.demo.vo"/>
 
         <!-- 设定生成后的DAO接口所在的包 -->
-        <property name="daoPackage" value="com.github.walker.mybatis.demo.dao"/>
+        <property name="daoPackage" value="your.project.demo.dao"/>
 
 
         <!-- 设定代码生成的输出目录, 支持相对路径或绝对路径 -->
         <property name="outputDirc" value="generated-files"/>
 
         <!-- 列出要生成的表名, 多个表可以逗号(',')分隔。 注意，数据库表必须指定了主键列。 -->
-        <property name="tables" value="menu,book_editor,book"/>
+        <property name="tables" value="menu,book_editor,book,editor"/>
 
     </params>
 

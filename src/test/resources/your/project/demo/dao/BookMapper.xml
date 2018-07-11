@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="your.project.demo.dao.BookDao">
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="bookId" >
+        INSERT INTO book( book_id,title,price,publish_time,blob_content,text_content )
+        VALUES ( #{bookId},#{title},#{price},#{publishTime},#{blobContent},#{textContent})
+    </insert>
+
+
+    <!-- batch insert for mysql -->
+    <insert id="saveBatch">
+        INSERT INTO book( book_id,title,price,publish_time,blob_content,text_content )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.bookId},#{item.title},#{item.price},#{item.publishTime},#{item.blobContent},#{item.textContent} )
+        </foreach>
+    </insert>
+
+
+    <!-- batch insert for oracle -->
+    <!--
+    <insert id="saveBatch">
+        INSERT INTO book( book_id,title,price,publish_time,blob_content,text_content )
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.bookId},#{item.title},#{item.price},#{item.publishTime},#{item.blobContent},#{item.textContent} 
+              FROM DUAL 
+        </foreach>
+    </insert>
+
+    -->
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="update">
+        UPDATE book
+        <set>
+            title=#{title},
+            price=#{price},
+            publish_time=#{publishTime},
+            blob_content=#{blobContent},
+            text_content=#{textContent},
+        </set>
+        WHERE book_id=#{bookId}
+    </update>
+
+    <update id="updateIgnoreNull">
+        UPDATE book
+        <set>
+            <if test="title!= null">title=#{title},</if>
+            <if test="price!= null">price=#{price},</if>
+            <if test="publishTime!= null">publish_time=#{publishTime},</if>
+            <if test="blobContent!= null">blob_content=#{blobContent},</if>
+            <if test="textContent!= null">text_content=#{textContent},</if>
+        </set>
+        WHERE book_id=#{bookId}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        UPDATE book
+        <set>
+            <foreach collection="list" item="item" index="index" open="title= CASE book_id" close="END" separator=" " >
+                WHEN #{item.bookId} THEN #{item.title}
+            </foreach>,
+            <foreach collection="list" item="item" index="index" open="price= CASE book_id" close="END" separator=" " >
+                WHEN #{item.bookId} THEN #{item.price}
+            </foreach>,
+            <foreach collection="list" item="item" index="index" open="publish_time= CASE book_id" close="END" separator=" " >
+                WHEN #{item.bookId} THEN #{item.publishTime}
+            </foreach>,
+            <foreach collection="list" item="item" index="index" open="blob_content= CASE book_id" close="END" separator=" " >
+                WHEN #{item.bookId} THEN #{item.blobContent}
+            </foreach>,
+            <foreach collection="list" item="item" index="index" open="text_content= CASE book_id" close="END" separator=" " >
+                WHEN #{item.bookId} THEN #{item.textContent}
+            </foreach>,
+        </set>
+        WHERE
+        <foreach collection="list" separator="or" item="item" index="index">
+            book_id=#{item.bookId}
+        </foreach>
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delete">
+        DELETE FROM book
+        WHERE book_id=#{bookId}
+    </delete>
+
+    <delete id="deleteBatch">
+        DELETE FROM book
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            book_id=#{item.bookId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteByPK">
+        DELETE FROM book
+        WHERE book_id=#{bookId}
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM book
+    </delete>
+
+    <delete id="deleteByIds">
+        DELETE FROM book
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            book_id=#{item}
+        </foreach>
+    </delete>
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM book
+    </select>
+
+    <select id="findByPK" resultType="your.project.demo.vo.Book">
+        SELECT * FROM book
+        WHERE book_id=#{bookId}
+    </select>
+
+    <select id="find" resultType="your.project.demo.vo.Book">
+        SELECT book_id,title,price,publish_time,blob_content,text_content
+        FROM book
+        <where>
+            <if test="bookId!= null">
+                AND book_id = #{bookId}
+            </if>
+            <if test="title!= null">
+                AND title like #{title}
+            </if>
+            <if test="price!= null">
+                AND price = #{price}
+            </if>
+            <if test="publishTime!= null">
+                AND publish_time = #{publishTime}
+            </if>
+            <if test="blobContent!= null">
+                AND blob_content = #{blobContent}
+            </if>
+            <if test="textContent!= null">
+                AND text_content = #{textContent}
+            </if>
+        </where>
+    </select>
+
+    <select id="findEditorAndBooks" resultType="your.project.demo.vo.Book">
+        select a.editor_id, a.name as editor_name, a.sex editor_sex, c.book_id,c.title,c.price,c.publish_time
+        from editor a, book_editor b, book c
+        where a.editor_id=b.editor_id and b.book_id = c.book_id
+        <if test="title != null and title!=''">
+            and c.title like #{title}
+        </if>
+        <if test="editorName != null and editorName !=''">
+            and a.name like #{editorName}
+        </if>
+        order by a.name, c.title
+    </select>
+</mapper>

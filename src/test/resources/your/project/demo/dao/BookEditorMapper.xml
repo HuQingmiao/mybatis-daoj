@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="your.project.demo.dao.BookEditorDao">
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="save">
+        INSERT INTO book_editor( book_id,editor_id )
+        VALUES ( #{bookId},#{editorId})
+    </insert>
+
+
+    <!-- batch insert for mysql -->
+    <insert id="saveBatch">
+        INSERT INTO book_editor( book_id,editor_id )
+        VALUES 
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.bookId},#{item.editorId} )
+        </foreach>
+    </insert>
+
+
+    <!-- batch insert for oracle -->
+    <!--
+    <insert id="saveBatch">
+        INSERT INTO book_editor( book_id,editor_id )
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.bookId},#{item.editorId} 
+              FROM DUAL 
+        </foreach>
+    </insert>
+
+    -->
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="update">
+        UPDATE book_editor
+        <set>
+        </set>
+        WHERE book_id=#{bookId} AND editor_id=#{editorId} 
+    </update>
+
+    <update id="updateIgnoreNull">
+        UPDATE book_editor
+        <set>
+        </set>
+        WHERE book_id=#{bookId} AND editor_id=#{editorId} 
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delete">
+        DELETE FROM book_editor
+        WHERE book_id=#{bookId} AND editor_id=#{editorId} 
+    </delete>
+
+    <delete id="deleteBatch">
+        DELETE FROM book_editor
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            book_id=#{item.bookId} AND editor_id=#{item.editorId} 
+        </foreach>
+    </delete>
+
+    <delete id="deleteByPK">
+        DELETE FROM book_editor
+        WHERE book_id=#{bookId} AND editor_id=#{editorId} 
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM book_editor
+    </delete>
+
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM book_editor
+    </select>
+
+    <select id="findByPK" resultType="your.project.demo.vo.BookEditor">
+        SELECT * FROM book_editor
+        WHERE book_id=#{bookId} AND editor_id=#{editorId} 
+    </select>
+
+    <select id="find" resultType="your.project.demo.vo.BookEditor">
+        SELECT book_id,editor_id
+         FROM book_editor
+        <where>
+            <if test="bookId!= null">
+               AND book_id = #{bookId}
+            </if>
+            <if test="editorId!= null">
+               AND editor_id = #{editorId}
+            </if>
+        </where>
+    </select>
+
+</mapper>
