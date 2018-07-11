@@ -161,10 +161,10 @@ class CodeBuilder {
         ///////////////////// save
         buff.append("\n    <!-- ============================= INSERT ============================= -->\n");
 
-        if(!pkColFieldMap.isEmpty()&&pkColFieldMap.size()==1){
+        if (!pkColFieldMap.isEmpty() && pkColFieldMap.size() == 1) {
             String keyField = pkColFieldMap.entrySet().iterator().next().getValue();
-            buff.append("    <insert id=\"save\" useGeneratedKeys=\"true\" keyProperty=\""+keyField+"\" >\n");
-        }else{
+            buff.append("    <insert id=\"save\" useGeneratedKeys=\"true\" keyProperty=\"" + keyField + "\" >\n");
+        } else {
             buff.append("    <insert id=\"save\">\n");
         }
 
@@ -375,38 +375,38 @@ class CodeBuilder {
         buff.append("\n");
         buff.append("    </update>\n\n");
 
+
         ///////////////////// updateBatch
-        buff.append("    <update id=\"updateBatch\" parameterType=\"java.util.List\">\n");
-        buff.append("        <foreach collection=\"list\" item=\"item\" index=\"index\"  separator=\";\">\n");
-        buff.append("            UPDATE " + tableName + "\n");
+        if (!pkColFieldMap.isEmpty() && pkColFieldMap.size() == 1) {
+            String pkColName = pkColFieldMap.keySet().iterator().next();
+            String pkField = pkColFieldMap.get(pkColName);
 
-        buff.append("            <set>\n");
-        it = colNameMetaMap.keySet().iterator();
-        for (; it.hasNext(); ) {
-            String colName = (String) it.next();
-            MetaDataDescr md = colNameMetaMap.get(colName);
-            if (md.isPk()) {
-                continue;
+            buff.append("    <update id=\"updateBatch\" parameterType=\"java.util.List\">\n");
+            buff.append("        UPDATE " + tableName + "\n");
+            buff.append("        <set>\n");
+
+            it = colNameMetaMap.keySet().iterator();
+            for (; it.hasNext(); ) {
+                String colName = (String) it.next();
+                MetaDataDescr md = colNameMetaMap.get(colName);
+                if (md.isPk()) {
+                    continue;
+                }
+                buff.append("            <foreach collection=\"list\" item=\"item\" index=\"index\" open=\""+colName+"= CASE "+pkColName+"\" close=\"END\" separator=\" \" >\n");
+                buff.append("                WHEN #{item."+pkField+"} THEN #{item."+md.getFieldName()+"}\n");
+                buff.append("            </foreach>,\n");
             }
-            buff.append("                " + colName + "=#{item." + md.getFieldName() + "},\n");
+
+            buff.append("        </set>\n");
+
+            buff.append("        WHERE \n");
+            buff.append("            <foreach collection=\"list\" separator=\"or\" item=\"item\" index=\"index\">\n");
+            buff.append("                "+pkColName+"=#{item."+pkField+"}\n");
+            buff.append("            </foreach>\n");
+
+            buff.append("    </update>\n\n");
         }
-        buff.append("            </set>\n");
 
-        buff.append("            WHERE ");
-
-        keyIt = pkColFieldMap.keySet().iterator();
-        for (; keyIt.hasNext(); ) {
-            String colName = keyIt.next();
-            buff.append(colName + "=#{item." + pkColFieldMap.get(colName) + "} AND ");
-        }
-        if (buff.substring(buff.length() - 4, buff.length()).equals("AND ")) {
-            buff.delete(buff.length() - 4, buff.length());
-        }
-        buff.append("\n");
-
-
-        buff.append("        </foreach>\n");
-        buff.append("    </update>\n\n");
 
         buff.append("\n    <!-- ============================= DELETE ============================= -->\n");
         buff.append("    <delete id=\"delete\">\n");
