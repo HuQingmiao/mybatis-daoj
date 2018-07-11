@@ -136,7 +136,7 @@ class CodeBuilder {
      * @param daoPackageName DAO类源码的包名
      * @return
      */
-    protected String buildMapperSource(String daoPackageName) throws Exception {
+    protected String buildMapperSource(String daoPackageName, String entityPackageName) throws Exception {
         final String head = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
                 "<!DOCTYPE mapper PUBLIC  \"-//mybatis.org//DTD Mapper 3.0//EN\"  \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n\n";
 
@@ -486,7 +486,7 @@ class CodeBuilder {
         buff.append("    </select>\n\n");
 
 
-        buff.append("    <select id=\"findByPK\" resultType=\"" + MappingUtil.getEntityName(tableName) + "\">\n");
+        buff.append("    <select id=\"findByPK\" resultType=\"" + entityPackageName+"."+MappingUtil.getEntityName(tableName) + "\">\n");
         buff.append("        SELECT * FROM " + tableName + "\n");
         buff.append("        WHERE ");
 
@@ -502,7 +502,7 @@ class CodeBuilder {
         buff.append("    </select>\n\n");
 
 
-        buff.append("    <select id=\"find\" resultType=\"" + MappingUtil.getEntityName(tableName) + "\">\n");
+        buff.append("    <select id=\"find\" resultType=\"" + entityPackageName+"."+MappingUtil.getEntityName(tableName) + "\">\n");
         buff.append("        SELECT ");
 
         it = colNameMetaMap.keySet().iterator();

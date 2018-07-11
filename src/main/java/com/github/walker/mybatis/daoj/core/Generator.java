@@ -100,7 +100,7 @@ public class Generator {
                         + File.separator + MappingUtil.getEntityName(tables[i]) + "Dao.java");
 
                 //生成MAPPER
-                codeStr = codeBuilder.buildMapperSource(daoPackage);
+                codeStr = codeBuilder.buildMapperSource(daoPackage, entityPackage);
                 this.createFile(codeStr, daoPackageDirc.getCanonicalPath()
                         + File.separator + MappingUtil.getEntityName(tables[i]) + "Mapper.xml");
 
