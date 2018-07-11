@@ -14,11 +14,11 @@
 ### 使用说明
 &nbsp;&nbsp;&nbsp;1. 下载源码，编译、打包，得到 mybatis-daoj.tar.gz 。
 
-&nbsp;&nbsp;&nbsp;2. 解压后打开 conf/mybatis-daoj.xml，配置数据库连接，设置表名，以及生成代码的输出目录。
+&nbsp;&nbsp;&nbsp;2. 解压 mybatis-daoj.tar.gz， 打开 conf/mybatis-daoj.xml，配置数据库连接、表名、输出目录。
 
-&nbsp;&nbsp;&nbsp;3. 运行 bin/start.bat, 将生成相应代码到设定的输出目录。 对于每个表，都将生成对应的1个vo实体类、1个dao接口类、1个mapper.xml; 将这些文件复制到你工程的对应目录。
+&nbsp;&nbsp;&nbsp;3. 运行 bin/start.bat 以生成代码。 对于每个表，会生成对应的1个vo实体类、1个dao接口类、1个mapper.xml。
 
-&nbsp;&nbsp;&nbsp;4. 注意事项:
+&nbsp;&nbsp;&nbsp;4. 将生成的代码复制到你的工程目录。注意:
 * 本程序生成的dao类没有任何接口方法，只是继承"BasicDao.java"；但你可以在子接口中扩展你的个性方法。
 * 如果你没有使用数据库的自增主键特性，则在生成mapper.xml文件后，必须删除INSERT部分的：`useGeneratedKeys="true" keyProperty="xx"` 。
     
