@@ -20,7 +20,7 @@ JAVA 8+
 1. 在你的项目pom中引入：
    ```
     <dependency>
-        <groupId>cn.com.walker</groupId>
+        <groupId>walker</groupId>
         <artifactId>mybatis-daoj</artifactId>
         <version>2.1.0</version>
     </dependency>
