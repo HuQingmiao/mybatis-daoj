@@ -1,58 +1,56 @@
+﻿
 ### 项目说明
 
-   Mybatis-paginator 是一款支持mysql、oracle、dm、vertica、oceanbase等数据库的分页插件。 主要特性：
-1. 可以查询任意起止行范围的记录。
-2. 可以按任意列排序而不用修改sql。 
-3. 支持mysql、oracle、dm、vertica、oceanbase、tdsql、达梦等多种数据库。
+Mybatis-daoj 是一款dao层的代码生成工具, 还能生成表结构文档。主要特性：
+
+1. 对数据库CURD抽象出14个标准的dao方法； 这些方法已经满足90%以上的使用场景，对于其它的10%的场景，也可通过扩展dao接口来实现。
+
+2. 对于存在row_version列的表，生成的sql会自动支持乐观锁并发更新。
+
+3. 可生成完整的表结构文档，包括每张表的表名、主键、唯一约束、注释。
+
+5. 支持mysql、oarcle、tdsql、oceanbase、vertica、达梦等多种数据库。
 
 
 ### 运行环境
- 当前版本在JAVA21上编译。
+JAVA 8+
 
-### 使用说明
 
-1.在你的项目pom中引入：
-```
+### 使用用法
+1. 在你的项目pom中引入：
+   ```
     <dependency>
-        <groupId>com.github.walker</groupId>    
-        <artifactId>mybatis-paginator</artifactId>
-        <version>${version}</version>
-    </dependency> 
-```
+        <groupId>cn.com.walker</groupId>
+        <artifactId>mybatis-daoj</artifactId>
+        <version>2.1.0</version>
+    </dependency>
+   ```
 
-2.打开你工程中的mybatis.xml，添加如下配置:
-
-```
-    <plugins>
-        <plugin interceptor="walker.mybatis.paginator.OffsetLimitInterceptor">
-            <property name="dialectClass" value="dialect.walker.mybatis.paginator.MySQLDialect"/>
-        </plugin>
-    </plugins>
-```
-
-3.你的程序可以这样调用分页接口：
-
-```
-     // 查询条件: 书名以 “UNIX” 开头
-     HashMap<String, Object> paramMap = new HashMap<String, Object>();
-     paramMap.put("title", "UNIX%");
-
-     // 排序规则: 按书名正序、时间倒序
-     String sortString = "title.asc, createTime.desc";
-
-     // 查询，获得符合条件的第 3~13行
-     PageBounds pageBounds = new PageBounds(3, 10, Order.formString(sortString));
-     ArrayList<Book> rsList = bookDao.findBooks(paramMap, pageBounds);  
-       
-     // 打印结果  
-     PageList<Book> pageList = (PageList<Book>) rsList;
-     log.info("符合条件的总的记录数: " + pageList.size()); 
-     log.info("本页记录数: " + rsList.size());
+2. 将mybatis-daoj.xml 复制到你的项目 resources/ 下, 配置数据库连接、表名、输出目录。<p/>
    
+3. 编写main()方法，调用如下代码，即可生成代码和文档： 
 
-  另外，分页参数PageBounds还有更多丰富的功能：   
-     new PageBounds();                                 // 采用默认构造函数，就相当于非分页方式
-     new PageBounds(Order.formString(sortString));     // 按书名正序、时间倒序排列，获取符合条件的所有记录
-     new PageBounds(10, Order.formString(sortString)); // 按书名正序、时间倒序排列, 获取符合条件的前10条记录
+   ```
+    // 生成dao层代码, 即：为每张表生成1个po实体类、1个dao接口类、1个mapper.xml
+    new Generator("mybatis-daoj.xml").generateCode();
 
-```
+    // 生成表结构文档， 即：为配置的所有表生成一份表结构文档
+    new Generator("mybatis-daoj.xml").generateDoc();
+   ```   
+
+4. 将生成的代码复制到你的工程目录，确保包名正确。接下来就可以在业务层代码中调用dao接口了。<p/>
+
+
+### 更新记录
+* 2021-09-xx, 增加特性：在po类中为每个字段生成注释; 
+* 2021-09-xx, 增加对达梦数据库的支持，并通过测试。
+* 2021-10-13, 增加特性：针对有row_version字段的表，会在所有update相关语句中增加`set row_version = row_version + 1 `
+的逻辑，并且会在dao类中多生成一个方法： `int updateWithOptiLock(BasicPo basicPo); // 采用row_version实现并发更新 `
+
+
+* 2022-02-12, 增加对oceanbase的支持。
+
+* 2022-07-28, 1)增加特性: 对oracle表生成的save方法，将自增的主键值自动注入主键属性。
+              2)修改bug: oracle生成的saveBatch方法，在未定义select 列别名但列值又重复的情况下，在执行该SQL时会报异常。
+            
+             

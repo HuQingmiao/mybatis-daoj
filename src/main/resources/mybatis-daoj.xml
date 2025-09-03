@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<daoj>
+    <dataSource>
+        <property name="pattern"    value="mysql" />  <!-- 这项仅对OceanBase有效，如果用的是oracle模式，则设置为oracle，否则设置为mysql。  -->
+        <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl"    value="jdbc:mysql://localhost:3306/arkdb"/>
+        <property name="username"   value="root"/>
+        <property name="password"   value="123456"/>
+    </dataSource>
+
+    <params>
+        <!-- 实体类基类-->
+        <property name="basicPo"   value="your.project.common.BasicPo"/>
+
+        <!-- DAO基类  -->
+        <property name="basicDao"  value="your.project.common.BasicDao"/>
+
+        <!-- 实体类的包名 -->
+        <property name="poPackage" value="your.project.dpo"/>
+
+        <!-- DAO类的包名 -->
+        <property name="daoPackage"    value="your.project.dao"/>
+
+        <!-- 码生成的输出目录, 支持相对路径或绝对路径 -->
+        <property name="outputDirc" value="generated-files"/>
+
+        <!-- 是否采用sequence做主键列自增长。目前这项仅对oracle、Oceanbase的oracle模式有效。 -->
+        <property name="pkAutoIncreased" value="false"/>
+
+        <!-- 列出要生成的表名, 多个表可以逗号(',')分隔。 注意，数据库表必须指定了主键列。 -->
+        <property name="tables" value="
+                                     book,editor,book_editor
+
+        "/>
+
+    </params>
+
+</daoj>
+
