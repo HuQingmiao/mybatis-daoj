@@ -4,23 +4,23 @@
     <dataSource>
         <property name="pattern"    value="mysql" />  <!-- 这项仅对OceanBase有效，如果用的是oracle模式，则设置为oracle，否则设置为mysql。  -->
         <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl"    value="jdbc:mysql://localhost:3306/arkdb"/>
+        <property name="jdbcUrl"    value="jdbc:mysql://localhost:3306/microsrv"/>
         <property name="username"   value="root"/>
         <property name="password"   value="123456"/>
     </dataSource>
 
     <params>
         <!-- 实体类基类-->
-        <property name="basicPo"   value="your.project.common.BasicPo"/>
+        <property name="basicPo"   value="walker.mybatisdaoj.test.common.BasicPo"/>
 
         <!-- DAO基类  -->
-        <property name="basicDao"  value="your.project.common.BasicDao"/>
+        <property name="basicDao"  value="walker.mybatisdaoj.test.common.BasicDao"/>
 
         <!-- 实体类的包名 -->
-        <property name="poPackage" value="your.project.dpo"/>
+        <property name="poPackage" value="walker.mybatisdaoj.test.dpo"/>
 
         <!-- DAO类的包名 -->
-        <property name="daoPackage"    value="your.project.dao"/>
+        <property name="daoPackage"    value="walker.mybatisdaoj.test.dao"/>
 
         <!-- 码生成的输出目录, 支持相对路径或绝对路径 -->
         <property name="outputDirc" value="generated-files"/>
